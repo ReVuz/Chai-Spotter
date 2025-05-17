@@ -34,7 +34,7 @@ function App() {
     name: stall.stall_name,
     location: 'User Added Location',
     description: 'A community-added tea spot',
-    specialties: [],
+    specialties: stall.specialties_text ? stall.specialties_text.split(', ') : [],
     position: [stall.latitude, stall.longitude],
     rating: stall.rating,
     imageUrl: 'https://images.pexels.com/photos/1493088/pexels-photo-1493088.jpeg'

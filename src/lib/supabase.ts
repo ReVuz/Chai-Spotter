@@ -15,6 +15,7 @@ export interface TeaStallDB {
   latitude: number;
   longitude: number;
   rating: number;
+  specialties_text: string;
   created_at?: string;
 }
 
