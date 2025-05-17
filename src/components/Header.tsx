@@ -7,10 +7,10 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center mb-3 sm:mb-0">
           <Mug className="h-8 w-8 mr-2 text-amber-300 dark:text-amber-400" />
-          <h1 className="text-2xl font-bold">Chaya Spotter</h1>
+          <h1 className="text-2xl font-bold">Chai Spotter</h1>
         </div>
         <div>
-          <p className="text-lg italic text-amber-200 dark:text-amber-300">Find your next chaya spot ☕</p>
+          <p className="text-lg italic text-amber-200 dark:text-amber-300">Find your next tea spot ☕</p>
         </div>
       </div>
     </header>
