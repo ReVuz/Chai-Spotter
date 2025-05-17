@@ -4,6 +4,8 @@ import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { TeaStall } from '../types';
 import TeaStallCard from './TeaStallCard';
+import { AddTeaSpot } from './AddTeaSpot';
+import { getTeaStalls, TeaStallDB } from '../lib/supabase';
 
 // Fix for default marker icons in Leaflet with React
 import marker from 'leaflet/dist/images/marker-icon.png';
@@ -44,6 +46,7 @@ const MapRecenter = ({ position, zoom }: { position: [number, number]; zoom: num
 const Map: React.FC<MapProps> = ({ stalls, selectedStall, setSelectedStall }) => {
   const keralaCenterPosition: [number, number] = [10.3528, 76.5604]; // Center of Kerala
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const [supabaseStalls, setSupabaseStalls] = useState<TeaStallDB[]>([]);
   
   // Effect for getting user location if allowed
   useEffect(() => {
@@ -57,6 +60,20 @@ const Map: React.FC<MapProps> = ({ stalls, selectedStall, setSelectedStall }) =>
         }
       );
     }
+  }, []);
+
+  // Fetch tea stalls from Supabase
+  useEffect(() => {
+    const fetchSupabaseStalls = async () => {
+      try {
+        const data = await getTeaStalls();
+        setSupabaseStalls(data || []);
+      } catch (error) {
+        console.error("Error fetching tea stalls:", error);
+      }
+    };
+
+    fetchSupabaseStalls();
   }, []);
 
   return (
@@ -79,6 +96,7 @@ const Map: React.FC<MapProps> = ({ stalls, selectedStall, setSelectedStall }) =>
           />
         )}
         
+        {/* Static stalls from data file */}
         {stalls.map((stall) => (
           <Marker 
             key={stall.id} 
@@ -95,6 +113,28 @@ const Map: React.FC<MapProps> = ({ stalls, selectedStall, setSelectedStall }) =>
             </Popup>
           </Marker>
         ))}
+
+        {/* Supabase stalls */}
+        {supabaseStalls.map((stall) => (
+          <Marker 
+            key={stall.id} 
+            position={[stall.latitude, stall.longitude]} 
+            icon={teaIcon}
+          >
+            <Popup className="stall-popup">
+              <div className="p-2 max-w-[250px]">
+                <h3 className="font-bold text-lg text-green-800 dark:text-green-400">
+                  {stall.stall_name}
+                </h3>
+                <div className="flex items-center mt-1">
+                  <span className="text-sm font-medium dark:text-gray-300">
+                    Rating: {stall.rating}/5
+                  </span>
+                </div>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
         
         {userLocation && (
           <Marker 
@@ -104,6 +144,8 @@ const Map: React.FC<MapProps> = ({ stalls, selectedStall, setSelectedStall }) =>
             <Popup>You are here!</Popup>
           </Marker>
         )}
+
+        <AddTeaSpot />
       </MapContainer>
     </div>
   );
