@@ -123,8 +123,7 @@ If you have suggestions for new tea spots, features, or bug fixes, please open a
 
 ## License
 
-&copy; 2025 Chaya Spotter.  
-This project is licensed under the MIT License.
+&copy; 2025 Chai Spotter.  
 
 ---
 
