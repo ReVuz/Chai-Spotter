@@ -1,6 +1,6 @@
 # Chai Spotter
 
-Discover Kerala's finest tea stalls and chai spots with **Chai Spotter**!  
+Discover finest tea stalls and chai spots with **Chai Spotter**!  
 A web app to explore, locate, and celebrate the unique chai culture across Kerala, India.
 
 <img src="https://img.icons8.com/color/96/000000/tea-cup.png" alt="Chaya Spotter Logo" width="48" />
@@ -21,8 +21,8 @@ A web app to explore, locate, and celebrate the unique chai culture across Keral
 
 ## Overview
 
-**Chaya Spotter** helps tea lovers and travelers discover authentic tea stalls ("chaya kada") across Kerala.  
-From the misty hills of Munnar to the backwaters of Alleppey, find the perfect spot for your next cup of chai using an interactive map and curated list of the best stalls.
+**Chai Spotter** helps tea lovers and travelers discover authentic tea stalls ("chaya kada") across the world.  
+Find the perfect spot for your next cup of chai using an interactive map and curated list of the best stalls.
 
 > _"Find your next tea spot ☕"_
 
